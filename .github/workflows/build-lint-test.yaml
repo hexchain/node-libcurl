@@ -1,13 +1,12 @@
 name: build-lint-test
 
-on:
-  pull_request:
+on: [push, workflow_dispatch]
 
 env:
   LIBCURL_RELEASE: 'LATEST'
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.ref }}
   cancel-in-progress: true
 
 # all jobs here must have a matrix identical to the ones inside build-and-release.yaml
